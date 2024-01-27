@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { userUserStore } from '@/stores'
+import { useUserStore } from '@/stores'
 import { ElMessage } from 'element-plus'
 import router from '@/router'
 const baseURL = 'http://big-event-vue-api-t.itheima.net'
@@ -13,7 +13,7 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     // TODO 2. 携带token
-    const useStore = userUserStore()
+    const useStore = useUserStore()
     if (useStore.token) {
       config.headers.Authorization = useStore.token
     }

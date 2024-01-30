@@ -70,6 +70,16 @@ const articleEditRef = ref()
 const onAddArticle = () => {
   articleEditRef.value.open({})
 }
+
+// 添加成功回调
+const onSuccess = (type) => {
+  if (type === 'add') {
+    // 渲染最后一页
+    const lastPage = Math.ceil((total.value + 1) / params.value.pagesize)
+    params.value.pagenum = lastPage
+  }
+  getArticleList()
+}
 </script>
 
 <template>
@@ -144,7 +154,7 @@ const onAddArticle = () => {
     />
   </page-container>
 
-  <article-edit ref="articleEditRef"></article-edit>
+  <article-edit ref="articleEditRef" @success="onSuccess"></article-edit>
 </template>
 
 <script></script>

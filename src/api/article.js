@@ -30,3 +30,20 @@ export const artGetListService = (params) => {
     params
   })
 }
+
+// 添加文章
+export const artPublishService = (data) => {
+  request.post('/my/article/add', data)
+}
+
+// 获取文章详情
+export const artGetDetailService = (id) => {
+  return request.get('/my/article/info', {
+    params: { id }
+  })
+}
+
+// 文章更新
+export const artEditService = (data) => {
+  return request.put('/my/article/info', data)
+}
